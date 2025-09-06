@@ -3,6 +3,10 @@ const { add } = require("./math");
 
 const app = express();
 
+app.get("/", (req, res) => {
+  res.json({ message:"this is success deployment viq CI/CD" });
+});
+
 app.get("/add", (req, res) => {
   const a = parseInt(req.query.a);
   const b = parseInt(req.query.b);

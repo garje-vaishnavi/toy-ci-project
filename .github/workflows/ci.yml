@@ -1,13 +1,11 @@
-name: Node.js CI
+name: Node.js CI/CD
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +22,10 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Deploy to Render
+        if: success()
+        run: |
+          curl -X POST "https://api.render.com/v1/services/srv-d2trp2nfte5s73ahh1kg/deploys" \
+          -H "Accept: application/json" \
+          -H "Authorization: Bearer rnd_BRNZQN3bbqcFsAMbO1CPzWpeaY6x"
