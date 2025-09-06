@@ -4,7 +4,7 @@ const { add } = require("./math");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.json({ message:"this is success deployment viq CI/CD" });
+  res.json({ message:"this is fail deployment viq CI/CD" });
 });
 
 app.get("/add", (req, res) => {
